@@ -65,14 +65,14 @@ if st.button("Generate Marketing Copy"):
     #######
 # Define your image generation parameters
 prompt = (image_description)
-response = openai.images.generate(
-  model="dall-e-3",  # Use DALL·E 3 for better image quality
-  prompt=prompt,
-  n=1,  
-  size="1024x1024"  
-)
-
-
-# Get the image URL
-image_url = response['data'][0]['url']
-print(image_url)
+try:
+    response = openai.images.generate(
+        model="dall-e-3",
+        prompt=prompt,
+        n=1,
+        size="1024x1024"
+    )
+    image_url = response['data'][0]['url']
+    st.image(image_url, caption="Generated Image")
+except Exception as e:
+    st.error(f"Error generating image: {e}")
