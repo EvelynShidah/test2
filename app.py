@@ -55,8 +55,14 @@ selected_channel = st.selectbox("Channel:", channels)
 selected_tone = st.selectbox("Tone:", tones)
 
 if st.button("Generate Marketing Copy"):
-    caption, image_description = generate_copy(product_name, selected_features, selected_benefits, selected_audience, selected_pain_points, selected_desires, selected_channel, selected_tone)
-    #
+    caption, image_description = generate_copy(product_name, selected_features, selected_benefits, selected_audience, selected_pain_points, selected_desires, selected_channel, selected_tone) 
+    st.subheader("Caption:")
+    st.write(caption)
+    st.subheader("Image Description:")
+    st.write(image_description)
+
+
+    #######
 # Define your image generation parameters
 prompt = (caption, image_description)
 response = openai.Image.create(
@@ -68,8 +74,3 @@ response = openai.Image.create(
 # Get the image URL
 image_url = response['data'][0]['url']
 print(image_url)
-    
-    st.subheader("Caption:")
-    st.write(caption)
-    st.subheader("Image Description:")
-    st.write(image_description)
