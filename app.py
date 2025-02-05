@@ -64,7 +64,7 @@ if st.button("Generate Marketing Copy"):
 
     #######
 # Define your image generation parameters
-prompt = (image_description)
+prompt = (caption)
 response = openai.Image.create(
   prompt=prompt,
   n=1,  # Number of images to generate (maximum of 1 for DALL-E 3)
